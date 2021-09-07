@@ -1,9 +1,9 @@
 const express = require ("express")
 const server = express()
-const routes = require("./views/routes")
+const routes = require("./routes")
+
 
 server.set("view engine", "ejs")
-
 //habilitar arquivos statics
 server.use(express.static("public"))
 
