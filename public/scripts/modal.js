@@ -3,6 +3,7 @@ export default function Modal({ animateClasses = [] }) {
   const wrapper = document.querySelector('.modal-wrapper');
   const element = document.querySelector('.modal');
   const cancelButton = element.querySelector("footer .button:nth-child(1)")
+   
 
   cancelButton.addEventListener('click', close)
 
@@ -30,3 +31,4 @@ export default function Modal({ animateClasses = [] }) {
   }
 
 }
+
