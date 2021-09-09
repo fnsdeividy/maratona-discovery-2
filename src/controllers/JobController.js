@@ -14,12 +14,14 @@ module.exports =  {
         const lastId = Job.get()[Job.get().length -1] ?.id || 0;
         
         
-        Job.get().push({
-            id: lastId + 1,
-            name: req.body.name,
-            "daily-hours": req.body["daily-hours"],
-            "total-hours": req.body["total-hours"],
-            createAt: Date.now()
+        Job.create ({
+            
+                id: lastId + 1,
+                name: req.body.name,
+                "daily-hours": req.body["daily-hours"],
+                "total-hours": req.body["total-hours"],
+                createAt: Date.now()
+                
             
         })
     

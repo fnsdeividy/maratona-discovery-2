@@ -42,8 +42,6 @@ module.exports = {
             const freeHoursStatus = freeHours >= 0 ? `Você tem ${freeHours} horas livres no seu dia ` : "Você não tem horario livre no seu dia " 
 
             
-            
-            
             return res.render("index",{jobs:updateJobs, Profile:Profile.get(), statusCount:statusCount,freeHoursStatus} )
         
         
