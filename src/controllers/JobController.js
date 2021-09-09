@@ -4,30 +4,7 @@ const Profile = require('../model/Profile')
 
 module.exports =  {
     
-    index(req, res) {
-
-        const Jobs = Job.get();
-        const updateJobs = Jobs.map((job) => {
-        
-                const remaining = JobUtils.remainingDays(job)
-                const status = remaining <= 0 ? "done"  : "progress"
-                const statusZero = remaining <= 0  ?  "Prazo Encerrado" : remaining + " dias para a entrega" 
-                
-                return {
-                    ...job, 
-                    remaining,
-                    status,
-                    statusZero,
-                    budget: JobUtils.calculateBudget(job, Profile.get()["value-hour"])
-                }
-            })
-            
-            
-            return res.render("index",{jobs:updateJobs, Profile:Profile.get()} )
-        
-        
-        
-    },
+    
     create(req,res) {
 
     
@@ -78,10 +55,10 @@ module.exports =  {
             if(Number(job.id) === Number(jobId)) {
                 job = updatedJob
             }
-            return 
+            return job
         })
         Job.update(newJobs)
-        res.redirect('/job/' + jobId)
+        res.redirect('/')
     },
     delete(req,res) {
         const jobId = req.params.id
