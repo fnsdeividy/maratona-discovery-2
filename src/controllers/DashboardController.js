@@ -6,8 +6,8 @@ const Profile = require('../model/Profile')
 module.exports = {
    async index(req, res) {
 
-        const jobs = Job.get();
-
+        const jobs = await Job.get();
+        const profile = await Profile.get()
         let statusCount = {
             progress : 0,
             done: 0,
@@ -33,16 +33,16 @@ module.exports = {
                     remaining,
                     status,
                     statusZero,
-                    budget: JobUtils.calculateBudget(job, Profile.get()["value-hour"])
+                    budget: JobUtils.calculateBudget(job, profile["value-hour"])
                 }
             })
              //qtd horas que vou trabalhar dia (profile) - quantidade de horas dia por projeto
-            const freeHours = Number(await Profile.get()["hours-per-day"]) - jobTotalHours 
+            const freeHours = Number(profile["hours-per-day"]) - jobTotalHours 
 
             const freeHoursStatus = freeHours >= 0 ? `Você tem ${freeHours} horas livres no seu dia ` : "Você não tem horario livre no seu dia " 
 
             
-            return res.render("index",{jobs:updateJobs, Profile: await Profile.get(), statusCount:statusCount,freeHoursStatus} )
+            return res.render("index",{jobs:updateJobs, profile: profile, statusCount:statusCount,freeHoursStatus} )
         
         
         
