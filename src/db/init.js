@@ -18,7 +18,7 @@ const initDb = {
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     daily_hours INT,
-    Total_hours INT,
+    total_hours INT,
     createAt DATETIME
 
 )`);

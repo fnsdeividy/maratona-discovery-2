@@ -1,5 +1,8 @@
+
+
 module.exports =  { 
     remainingDays(job) {
+        
         const remainingDays = (job["total-hours"] / job["daily-hours"]).toFixed()
     
             const createdDate = new Date(job.createAt)
